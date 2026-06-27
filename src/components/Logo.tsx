@@ -17,7 +17,8 @@ export const Logo: React.FC<LogoProps> = ({ className = "", size = 48 }) => {
         width={size}
         height={size}
         priority
-        style={{ width: size, height: size, objectFit: "contain" }}
+        className="rounded-full"
+        style={{ width: size, height: size, objectFit: "cover" }}
       />
     </div>
   );
