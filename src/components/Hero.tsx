@@ -42,7 +42,7 @@ export const Hero: React.FC = () => {
             className="text-[2.5rem] sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6 font-heading"
           >
             We Build{" "}
-            <span className="text-gradient-purple-pink">Website</span> <br />
+            <span className="text-gradient-purple-pink">Websites</span> <br />
             That Grow Your <span className="text-gradient-cyan-blue">Business</span>.
           </motion.h1>
 
