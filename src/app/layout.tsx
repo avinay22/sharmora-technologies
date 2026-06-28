@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   creator: "Avinay Sharma",
   publisher: "Sharmora Technologies",
   verification: {
-    google: "HsQQuc8F8gob7Z",
+    google: "HsQQuc8F8gob7Zg22kH1M9tv2YRxnFrpbj1z3pt1EBw",
   },
 };
 
