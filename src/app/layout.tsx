@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Avinay Sharma", url: "mailto:sharmoratechnologies@gmail.com" }],
   creator: "Avinay Sharma",
   publisher: "Sharmora Technologies",
+  verification: {
+    google: "HsQQuc8F8gob7Z",
+  },
 };
 
 export default function RootLayout({
