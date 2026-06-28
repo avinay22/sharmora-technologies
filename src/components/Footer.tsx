@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
         {/* Company Column */}
         <div className="flex flex-col gap-4 text-left">
           <Link href="/" className="w-fit">
-            <Logo size={80} />
+            <Logo size={110} />
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs mt-2 font-sans">
             Building solutions, delivering success. We engineer bespoke, feature-rich web systems refined by our mastermind strategy.

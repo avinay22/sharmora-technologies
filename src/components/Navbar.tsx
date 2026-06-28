@@ -36,14 +36,13 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass-nav py-3" : "bg-transparent py-5"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-nav py-3" : "bg-transparent py-5"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 xl:px-8 flex items-center justify-between">
           {/* Exact Logo Emblem + Text */}
           <Link href="/" className="flex items-center gap-1 group">
-            <Logo size={44} />
+            <Logo size={48} />
           </Link>
 
           {/* Desktop Links */}

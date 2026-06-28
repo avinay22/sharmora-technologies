@@ -40,7 +40,7 @@ export const FounderSection: React.FC = () => {
             <div className="relative w-full aspect-[4/5] sm:max-w-[340px] rounded-[28px] overflow-hidden border border-white/20 shadow-2xl bg-secondary/80 z-10 group">
               <Image
                 src="/founder.png"
-                alt="Avinay Sharma, Founder of Sharmora Technologies"
+                alt="Avinay Sharma, Founder"
                 fill
                 sizes="(max-w-768px) 100vw, 340px"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -50,10 +50,10 @@ export const FounderSection: React.FC = () => {
               {/* Authentication Overlay */}
               <div className="absolute bottom-4 left-4 right-4 py-2 px-3.5 rounded-xl glass-card border border-white/10 text-center select-none">
                 <p className="text-[10px] text-gray-300 font-semibold tracking-wider leading-none uppercase">
-                  Authentic Portrait
+                  Avinay Sharma
                 </p>
                 <p className="text-[9px] text-[#f472b6] font-bold mt-1 tracking-wide leading-none">
-                  100% Original Photo • No AI Added
+                  Founder • Sharmora Technologies
                 </p>
               </div>
             </div>
@@ -78,7 +78,7 @@ export const FounderSection: React.FC = () => {
               </div>
 
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8 font-sans">
-                "I'm Avinay Sharma, founder of Sharmora Technologies. I believe a great website should do more than look beautiful.
+                "I'm Avinay Sharma, Founder. I believe a great website should do more than look beautiful.
               </p>
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8 font-sans">
                 My goal isn't just to build a website. It's to help your business create a strong first impression, earn people's trust, and grow online with confidence."

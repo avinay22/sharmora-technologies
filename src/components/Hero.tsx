@@ -126,7 +126,7 @@ export const Hero: React.FC = () => {
               transition={{ type: "spring", damping: 15, delay: 0.3 }}
               className="absolute w-[45%] h-[45%] rounded-full glass-card border border-white/10 flex items-center justify-center p-6 shadow-2xl select-none"
             >
-              <Logo size={140} />
+              <Logo size={180} />
             </motion.div>
 
             {/* Floating Orbiter Card 1: Custom Codes */}
