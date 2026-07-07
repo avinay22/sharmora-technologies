@@ -5,74 +5,144 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Cpu, Sparkles, MessageSquare, Zap } from "lucide-react";
 import { Logo } from "./Logo";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const lineReveal = {
+  hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },
+  visible: {
+    clipPath: "inset(0 0 0% 0)",
+    opacity: 1,
+    transition: { duration: 0.72, ease: EASE_OUT },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: EASE_OUT },
+  },
+};
+
 export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden mesh-bg pt-20">
       {/* Decorative Grid Overlay */}
-      <div className="absolute inset-0 grid-overlay pointer-events-none opacity-40" />
+      <div className="absolute inset-0 grid-overlay pointer-events-none opacity-50" />
 
-      {/* Decorative Glowing Mesh Orbs */}
-      <div className="glow-orb top-[-10%] left-[5%] w-[45vw] h-[45vw] bg-primary/20" />
-      <div className="glow-orb bottom-[-10%] right-[5%] w-[40vw] h-[40vw] bg-accent-pink/15" />
-      <div className="glow-orb top-[30%] right-[20%] w-[35vw] h-[35vw] bg-light-blue/15" />
+      {/* Warm Glow Orbs - Gold, Emerald, Rust */}
+      <div
+        className="glow-orb top-[-10%] left-[5%] w-[45vw] h-[45vw]"
+        style={{ background: "hsl(38,92%,56%)" }}
+      />
+      <div
+        className="glow-orb bottom-[-10%] right-[5%] w-[40vw] h-[40vw]"
+        style={{ background: "hsl(20,85%,55%)" }}
+      />
+      <div
+        className="glow-orb top-[30%] right-[20%] w-[35vw] h-[35vw]"
+        style={{ background: "hsl(145,75%,52%)" }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 xl:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 py-20 lg:py-0 min-h-[calc(100svh-80px)] items-center">
 
         {/* LEFT — Typography & Description */}
-        <div className="flex flex-col items-start text-left z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-start text-left z-10"
+        >
 
           {/* Label Pill */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/20 mb-6"
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
+            style={{
+              background: "rgba(217,130,43,0.08)",
+              border: "1px solid rgba(217,130,43,0.22)",
+            }}
           >
-            <span className="w-2 h-2 rounded-full bg-accent-pink animate-pulse-soft" />
-            <span className="text-[#a78bfa] text-[11px] font-bold tracking-widest uppercase font-heading">
+            <span
+              className="w-2 h-2 rounded-full animate-pulse-soft"
+              style={{ background: "hsl(20,85%,55%)" }}
+            />
+            <span
+              className="text-[11px] font-bold tracking-widest uppercase font-heading"
+              style={{ color: "hsl(38,92%,56%)" }}
+            >
               PROFESSIONAL WEBSITE DEVELOPMENT
             </span>
           </motion.div>
 
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[2.5rem] sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6 font-heading"
-          >
-            We Build{" "}
-            <span className="text-gradient-purple-pink">Websites</span> <br />
-            That Grow Your <span className="text-gradient-cyan-blue">Business</span>.
-          </motion.h1>
+          {/* Heading — clip-path line reveal */}
+          <div className="overflow-visible mb-6">
+            <motion.h1
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-[2.5rem] sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.1] font-heading"
+              style={{ color: "hsl(38,60%,94%)" }}
+            >
+              <motion.span variants={lineReveal} className="block overflow-hidden">
+                We Build{" "}
+                <span className="text-gradient-purple-pink">Websites</span>
+              </motion.span>
+              <motion.span variants={lineReveal} className="block overflow-hidden">
+                That Grow Your{" "}
+                <span className="text-gradient-cyan-blue">Business.</span>
+              </motion.span>
+            </motion.h1>
+          </div>
 
           {/* Subheading */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-[520px] mb-8 font-sans"
+            variants={fadeUp}
+            className="text-base sm:text-lg leading-relaxed max-w-[520px] mb-8 font-sans"
+            style={{ color: "hsl(38,18%,70%)" }}
           >
             Your business deserves to be seen, trusted, and remembered. We build custom websites that reflect your vision, inspire confidence, and help your business stand out from the very first visit.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            variants={fadeUp}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10"
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full btn-primary text-[14px] font-bold tracking-wide transition-all duration-300 hover:shadow-xl font-heading text-white cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full btn-primary text-[14px] font-bold tracking-wide transition-all duration-300 font-heading cursor-pointer"
             >
-              Let's Build Your Website
+              Let&apos;s Build Your Website
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="#advantages"
-              className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-border text-gray-200 hover:text-white text-[14px] font-semibold hover:border-gray-500 hover:bg-light-gray transition-all duration-300 font-heading cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold transition-all duration-300 font-heading cursor-pointer"
+              style={{
+                border: "1px solid rgba(217,130,43,0.2)",
+                color: "hsl(38,18%,70%)",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.borderColor = "rgba(217,130,43,0.45)";
+                el.style.color = "hsl(38,60%,94%)";
+                el.style.background = "rgba(217,130,43,0.06)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.borderColor = "rgba(217,130,43,0.2)";
+                el.style.color = "hsl(38,18%,70%)";
+                el.style.background = "transparent";
+              }}
             >
               OUR PROMISE
             </a>
@@ -80,113 +150,172 @@ export const Hero: React.FC = () => {
 
           {/* Core Focus Items */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-6 w-full max-w-[500px]"
+            variants={fadeUp}
+            className="flex flex-wrap gap-x-6 gap-y-3 pt-6 w-full max-w-[500px]"
+            style={{ borderTop: "1px solid rgba(217,130,43,0.12)" }}
           >
             {[
               "Built for Your Business",
               "Mobile-Friendly Website",
               "Easy to Use",
             ].map((item) => (
-              <div key={item} className="flex items-center gap-2 text-[12.5px] font-medium text-gray-300 font-heading">
-                <CheckCircle2 className="w-4 h-4 text-accent-pink shrink-0" />
+              <div
+                key={item}
+                className="flex items-center gap-2 text-[12.5px] font-medium font-heading"
+                style={{ color: "hsl(38,18%,70%)" }}
+              >
+                <CheckCircle2
+                  className="w-4 h-4 shrink-0"
+                  style={{ color: "hsl(145,75%,52%)" }}
+                />
                 {item}
               </div>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* RIGHT — Animated Custom Mastermind Composition */}
+        {/* RIGHT — Animated Custom Composition */}
         <div className="flex items-center justify-center lg:justify-end relative z-10">
           <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
 
-            {/* Soft inner glow behind central logo */}
-            <div className="absolute w-64 h-64 rounded-full bg-primary/20 blur-[60px] pointer-events-none animate-pulse-soft" />
+            {/* Inner glow behind logo */}
+            <div
+              className="absolute w-64 h-64 rounded-full blur-[60px] pointer-events-none animate-pulse-soft"
+              style={{ background: "hsl(38,92%,56%,0.18)" }}
+            />
 
-            {/* Orbit Ring 1 - Dashed Accent */}
+            {/* Orbit Ring 1 - Gold dashed */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[80%] h-[80%] rounded-full border border-dashed border-gray-700/50"
+              transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[80%] h-[80%] rounded-full border-dashed"
+              style={{ border: "1px dashed rgba(217,130,43,0.22)" }}
             />
 
-            {/* Orbit Ring 2 - Solid Accent */}
+            {/* Orbit Ring 2 - Rust solid */}
             <motion.div
               animate={{ rotate: -360 }}
-              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[60%] h-[60%] rounded-full border border-gray-800/40"
+              transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[60%] h-[60%] rounded-full"
+              style={{ border: "1px solid rgba(210,100,50,0.18)" }}
             />
 
-            {/* Central Mastermind Emblem */}
+            {/* Central Emblem */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", damping: 15, delay: 0.3 }}
-              className="absolute w-[45%] h-[45%] rounded-full glass-card border border-white/10 flex items-center justify-center p-6 shadow-2xl select-none"
+              className="absolute w-[45%] h-[45%] rounded-full glass-card flex items-center justify-center p-6 shadow-2xl select-none"
+              style={{ border: "1px solid rgba(217,130,43,0.15)" }}
             >
               <Logo size={180} />
             </motion.div>
 
-            {/* Floating Orbiter Card 1: Custom Codes */}
+            {/* Floating Card 1: Custom Design */}
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-[8%] left-[10%] glass-card p-3 rounded-2xl border border-primary/20 shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              whileHover={{ scale: 1.06 }}
+              className="absolute top-[8%] left-[10%] glass-card p-3 rounded-2xl shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              style={{ border: "1px solid rgba(217,130,43,0.2)" }}
             >
-              <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: "rgba(217,130,43,0.12)", color: "hsl(38,92%,56%)" }}
+              >
                 <Cpu className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] text-gray-400 font-semibold leading-none uppercase tracking-wider font-sans">CUSTOM DESIGN
+                <p
+                  className="text-[10px] font-semibold leading-none uppercase tracking-wider font-sans"
+                  style={{ color: "hsl(38,18%,70%)" }}
+                >
+                  CUSTOM DESIGN
                 </p>
-                <p className="text-[12px] text-white font-bold font-heading">Made for You</p>
+                <p className="text-[12px] font-bold font-heading" style={{ color: "hsl(38,60%,94%)" }}>
+                  Made for You
+                </p>
               </div>
             </motion.div>
 
-            {/* Floating Orbiter Card 2: Speed / UX */}
+            {/* Floating Card 2: Fast Loading */}
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-[10%] left-[5%] glass-card p-3 rounded-2xl border border-accent-pink/20 shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              whileHover={{ scale: 1.06 }}
+              className="absolute bottom-[10%] left-[5%] glass-card p-3 rounded-2xl shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              style={{ border: "1px solid rgba(210,100,50,0.2)" }}
             >
-              <div className="w-8 h-8 rounded-lg bg-accent-pink/10 text-accent-pink flex items-center justify-center">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: "rgba(210,100,50,0.1)", color: "hsl(20,85%,55%)" }}
+              >
                 <Zap className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] text-gray-400 font-semibold leading-none uppercase tracking-wider font-sans">FAST LOADING</p>
-                <p className="text-[12px] text-white font-bold font-heading">Better Experience</p>
+                <p
+                  className="text-[10px] font-semibold leading-none uppercase tracking-wider font-sans"
+                  style={{ color: "hsl(38,18%,70%)" }}
+                >
+                  FAST LOADING
+                </p>
+                <p className="text-[12px] font-bold font-heading" style={{ color: "hsl(38,60%,94%)" }}>
+                  Better Experience
+                </p>
               </div>
             </motion.div>
 
-            {/* Floating Orbiter Card 3: Interactive Animations */}
+            {/* Floating Card 3: Mobile Ready */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-[28%] right-[-5%] glass-card p-3 rounded-2xl border border-cyan-400/20 shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              whileHover={{ scale: 1.06 }}
+              className="absolute top-[28%] right-[-5%] glass-card p-3 rounded-2xl shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              style={{ border: "1px solid rgba(50,200,100,0.2)" }}
             >
-              <div className="w-8 h-8 rounded-lg bg-cyan-400/10 text-cyan-400 flex items-center justify-center">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: "rgba(50,200,100,0.1)", color: "hsl(145,75%,52%)" }}
+              >
                 <Sparkles className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] text-gray-400 font-semibold leading-none uppercase tracking-wider font-sans">MOBILE READY</p>
-                <p className="text-[12px] text-white font-bold font-heading">Looks Great Everywhere</p>
+                <p
+                  className="text-[10px] font-semibold leading-none uppercase tracking-wider font-sans"
+                  style={{ color: "hsl(38,18%,70%)" }}
+                >
+                  MOBILE READY
+                </p>
+                <p className="text-[12px] font-bold font-heading" style={{ color: "hsl(38,60%,94%)" }}>
+                  Looks Great Everywhere
+                </p>
               </div>
             </motion.div>
 
-            {/* Floating Orbiter Card 4: Strategy */}
+            {/* Floating Card 4: Ongoing Support */}
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              className="absolute bottom-[15%] right-[5%] glass-card p-3 rounded-2xl border border-amber-500/20 shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              whileHover={{ scale: 1.06 }}
+              className="absolute bottom-[15%] right-[5%] glass-card p-3 rounded-2xl shadow-lg flex items-center gap-2.5 backdrop-blur-md"
+              style={{ border: "1px solid rgba(217,130,43,0.2)" }}
             >
-              <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: "rgba(217,130,43,0.1)", color: "hsl(42,95%,52%)" }}
+              >
                 <MessageSquare className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] text-gray-400 font-semibold leading-none uppercase tracking-wider font-sans">ONGOING SUPPORT</p>
-                <p className="No AI text-[12px] text-white font-bold font-heading">We're Here to Help</p>
+                <p
+                  className="text-[10px] font-semibold leading-none uppercase tracking-wider font-sans"
+                  style={{ color: "hsl(38,18%,70%)" }}
+                >
+                  ONGOING SUPPORT
+                </p>
+                <p className="text-[12px] font-bold font-heading" style={{ color: "hsl(38,60%,94%)" }}>
+                  We&apos;re Here to Help
+                </p>
               </div>
             </motion.div>
 

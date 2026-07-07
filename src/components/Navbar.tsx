@@ -36,11 +36,12 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-nav py-3" : "bg-transparent py-5"
-          }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "glass-nav py-3" : "bg-transparent py-5"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 xl:px-8 flex items-center justify-between">
-          {/* Exact Logo Emblem + Text */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-1 group">
             <Logo size={48} />
           </Link>
@@ -52,15 +53,18 @@ export const Navbar: React.FC = () => {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-[13.5px] font-medium text-gray-300 hover:text-white transition-colors duration-200 relative group font-heading"
+                className="text-[13.5px] font-medium transition-colors duration-200 relative group font-heading"
+                style={{ color: "hsl(38 18% 70%)" }}
               >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-accent-pink scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span className="group-hover:text-[hsl(38,60%,94%)] transition-colors duration-200">
+                  {link.label}
+                </span>
+                <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[hsl(38,92%,56%)] to-[hsl(20,85%,55%)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
               </Link>
             ))}
           </nav>
 
-          {/* CTA - Direct WhatsApp Connect */}
+          {/* CTA - WhatsApp */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://wa.me/917896554039"
@@ -76,7 +80,11 @@ export const Navbar: React.FC = () => {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-border text-gray-300 hover:bg-light-gray hover:text-white transition-colors"
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border transition-colors"
+            style={{
+              borderColor: "rgba(217,130,43,0.2)",
+              color: "hsl(38 18% 70%)",
+            }}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -92,7 +100,11 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-[#060913]/98 backdrop-blur-lg flex flex-col pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col pt-24 px-6 md:hidden"
+            style={{
+              background: "rgba(12,8,7,0.97)",
+              backdropFilter: "blur(20px)",
+            }}
           >
             <div className="flex flex-col gap-2">
               {links.map((link, i) => (
@@ -105,7 +117,17 @@ export const Navbar: React.FC = () => {
                   <Link
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="block py-4 text-2xl font-bold text-gray-100 border-b border-border hover:text-primary transition-colors font-heading"
+                    className="block py-4 text-2xl font-bold border-b font-heading transition-colors duration-200"
+                    style={{
+                      color: "hsl(38 60% 94%)",
+                      borderColor: "rgba(217,130,43,0.12)",
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.target as HTMLElement).style.color = "hsl(38,92%,56%)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.target as HTMLElement).style.color = "hsl(38 60% 94%)")
+                    }
                   >
                     {link.label}
                   </Link>

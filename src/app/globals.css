@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: hsl(263 90% 60%);
-  --color-primary-hover: hsl(263 90% 50%);
-  --color-secondary: hsl(224 45% 6%);
-  --color-accent: hsl(199 89% 48%);
-  --color-accent-pink: hsl(325 90% 60%);
-  --color-accent-amber: hsl(24 95% 55%);
-  --color-charcoal: hsl(215 15% 85%);
-  --color-muted: hsl(215 15% 65%);
-  --color-light-blue: hsl(217 91% 60%);
-  --color-light-gray: rgba(255, 255, 255, 0.03);
-  --color-border: rgba(255, 255, 255, 0.08);
+  --color-primary: hsl(38 92% 56%);
+  --color-primary-hover: hsl(38 92% 48%);
+  --color-secondary: hsl(12 25% 4%);
+  --color-accent: hsl(145 75% 52%);
+  --color-accent-pink: hsl(20 85% 55%);
+  --color-accent-amber: hsl(42 95% 52%);
+  --color-charcoal: hsl(38 60% 94%);
+  --color-muted: hsl(38 18% 70%);
+  --color-light-blue: hsl(20 70% 60%);
+  --color-light-gray: rgba(217, 130, 43, 0.04);
+  --color-border: rgba(217, 130, 43, 0.12);
   
   --font-sans: var(--font-outfit), system-ui, sans-serif;
   --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
 }
 
 :root {
-  --background: #060913;
-  --foreground: #f3f4f6;
+  --background: #0c0807;
+  --foreground: #f9f5eb;
   scroll-behavior: smooth;
 }
 
@@ -39,48 +39,48 @@ body {
 
 /* ===== GLOWING MESH BACKGROUND ===== */
 .mesh-bg {
-  background-color: #060913;
+  background-color: #0c0807;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(263, 90%, 50%, 0.18) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(217, 91%, 50%, 0.18) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(325, 90%, 50%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(24, 95%, 45%, 0.12) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, hsla(263, 90%, 50%, 0.08) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(38, 92%, 56%, 0.14) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(145, 75%, 52%, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(20, 85%, 55%, 0.12) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(42, 95%, 52%, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, hsla(38, 92%, 56%, 0.06) 0px, transparent 50%);
   background-attachment: fixed;
 }
 
-/* Sub-grid pattern for modern tech look */
+/* Sub-grid pattern for modern organic tech look */
 .grid-overlay {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(217, 130, 43, 0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(217, 130, 43, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center center;
 }
 
 /* ===== GLASSMORPHISM ===== */
 .glass-nav {
-  background-color: rgba(6, 9, 19, 0.75);
+  background-color: rgba(12, 8, 7, 0.82);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(217, 130, 43, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(24, 18, 15, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(217, 130, 43, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), 
-              0 0 20px 0 rgba(139, 92, 246, 0.15);
+  background: rgba(36, 28, 24, 0.75);
+  border-color: rgba(217, 130, 43, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.65), 
+              0 0 20px 0 rgba(217, 130, 43, 0.12);
 }
 
 /* ===== GLOWING ELEMENTS ===== */
@@ -88,7 +88,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.45;
+  opacity: 0.35;
   mix-blend-mode: screen;
   pointer-events: none;
   animation: orb-float 20s infinite ease-in-out alternate;
@@ -96,21 +96,21 @@ body {
 
 /* ===== TEXT GRADIENTS ===== */
 .text-gradient-purple-pink {
-  background: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #fb923c 100%);
+  background: linear-gradient(135deg, hsl(38, 92%, 56%) 0%, hsl(20, 85%, 55%) 50%, hsl(42, 95%, 52%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-cyan-blue {
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, hsl(38, 92%, 56%) 0%, hsl(145, 75%, 52%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-emerald-cyan {
-  background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+  background: linear-gradient(135deg, hsl(145, 75%, 52%) 0%, hsl(20, 85%, 55%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -145,10 +145,11 @@ body {
 .btn-primary {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, hsl(263, 90%, 60%) 0%, hsl(325, 90%, 60%) 100%);
-  color: white;
+  background: linear-gradient(135deg, hsl(38, 92%, 56%) 0%, hsl(20, 85%, 55%) 100%);
+  color: #0c0807;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px rgba(217, 130, 43, 0.25);
+  border: 1px solid rgba(217, 130, 43, 0.4);
 }
 
 .btn-primary::before {
@@ -158,7 +159,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   transition: all 0.6s ease;
 }
 
@@ -168,14 +169,19 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5), 0 0 10px rgba(244, 114, 182, 0.3);
+  box-shadow: 0 0 30px rgba(217, 130, 43, 0.45), 0 0 10px rgba(245, 158, 11, 0.35);
+  color: #000000;
 }
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #060913; }
-::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.4); }
+::-webkit-scrollbar-track { background: #0c0807; }
+::-webkit-scrollbar-thumb { background: rgba(217, 130, 43, 0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(217, 130, 43, 0.35); }
 
 /* ===== SELECTION ===== */
-::selection { background: rgba(139, 92, 246, 0.3); color: #ffffff; }
+::selection { background: rgba(217, 130, 43, 0.25); color: #f9f5eb; }
+
+/* ===== FORM PLACEHOLDER ===== */
+::placeholder { color: hsl(38, 10%, 45%); opacity: 1; }
+

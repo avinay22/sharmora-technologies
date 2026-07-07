@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MessageSquare, ArrowRight, Sparkles, Send } from "lucide-react";
+import { Mail, Phone, MessageSquare, Sparkles, Send } from "lucide-react";
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -44,91 +44,237 @@ export const ContactSection: React.FC = () => {
     window.open(mailtoUrl, "_self");
   };
 
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "14px 16px",
+    borderRadius: "12px",
+    border: "1px solid rgba(217,130,43,0.18)",
+    background: "rgba(24,18,15,0.7)",
+    color: "hsl(38,60%,94%)",
+    fontSize: "14px",
+    fontWeight: 500,
+    outline: "none",
+    transition: "border-color 0.2s, box-shadow 0.2s",
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    e.target.style.borderColor = "hsl(38,92%,56%)";
+    e.target.style.boxShadow = "0 0 0 3px rgba(217,130,43,0.12)";
+  };
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    e.target.style.borderColor = "rgba(217,130,43,0.18)";
+    e.target.style.boxShadow = "none";
+  };
+
   return (
-    <section id="contact" className="py-24 bg-[#060913] relative overflow-hidden">
-      {/* Glow backgrounds */}
-      <div className="absolute top-[40%] left-[-15%] w-[45vw] h-[45vw] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[-15%] w-[45vw] h-[45vw] rounded-full bg-accent-pink/5 blur-[120px] pointer-events-none" />
+    <section
+      id="contact"
+      className="py-24 relative overflow-hidden"
+      style={{ background: "#0c0807" }}
+    >
+      {/* Warm glow blobs */}
+      <div
+        className="absolute top-[40%] left-[-15%] w-[45vw] h-[45vw] rounded-full blur-[120px] pointer-events-none"
+        style={{ background: "rgba(217,130,43,0.05)" }}
+      />
+      <div
+        className="absolute top-[20%] right-[-15%] w-[45vw] h-[45vw] rounded-full blur-[120px] pointer-events-none"
+        style={{ background: "rgba(210,100,50,0.05)" }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start max-w-5xl mx-auto">
-          
+
           {/* LEFT: Info & Quick Contacts */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/20 mb-4">
-              <span className="text-xs font-bold tracking-widest text-[#a78bfa] uppercase font-heading">
+          <motion.div
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="lg:col-span-5 flex flex-col items-start text-left"
+          >
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4"
+              style={{
+                background: "rgba(217,130,43,0.08)",
+                border: "1px solid rgba(217,130,43,0.2)",
+              }}
+            >
+              <span
+                className="text-xs font-bold tracking-widest uppercase font-heading"
+                style={{ color: "hsl(38,92%,56%)" }}
+              >
                 Connect
               </span>
             </div>
-            
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.1] mb-6 font-heading">
-              Let's Build Your <span className="text-gradient-purple-pink">Vision</span>.
+
+            <h2
+              className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 font-heading"
+              style={{ color: "hsl(38,60%,94%)" }}
+            >
+              Let&apos;s Build Your{" "}
+              <span className="text-gradient-purple-pink">Vision</span>.
             </h2>
-            
-            <p className="text-gray-300 text-base leading-relaxed mb-8 max-w-md font-sans">
+
+            <p
+              className="text-base leading-relaxed mb-8 max-w-md font-sans"
+              style={{ color: "hsl(38,18%,70%)" }}
+            >
               Have a custom project in mind? Fill out the form, choose your preferred communication channel, and send it directly to founder Avinay Sharma.
             </p>
 
-            {/* Contact details */}
+            {/* Contact cards */}
             <div className="flex flex-col gap-4 w-full">
-              
-              <a 
+
+              <a
                 href="https://wa.me/917896554039"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/3 hover:bg-white/5 hover:border-primary/20 hover:shadow-lg transition-all duration-300 group"
+                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 group"
+                style={{
+                  border: "1px solid rgba(217,130,43,0.1)",
+                  background: "rgba(217,130,43,0.03)",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(217,130,43,0.3)";
+                  el.style.background = "rgba(217,130,43,0.07)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(217,130,43,0.1)";
+                  el.style.background = "rgba(217,130,43,0.03)";
+                }}
               >
-                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <div
+                  className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(217,130,43,0.12)", color: "hsl(38,92%,56%)" }}
+                >
                   <MessageSquare className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-extrabold text-gray-400 tracking-wider uppercase font-sans">WhatsApp Chat</span>
-                  <span className="font-bold text-white text-sm font-heading">Direct Reply (+91 78965 54039)</span>
+                  <span
+                    className="text-[10px] font-extrabold tracking-wider uppercase font-sans"
+                    style={{ color: "hsl(38,18%,60%)" }}
+                  >
+                    WhatsApp Chat
+                  </span>
+                  <span
+                    className="font-bold text-sm font-heading"
+                    style={{ color: "hsl(38,60%,94%)" }}
+                  >
+                    Direct Reply (+91 78965 54039)
+                  </span>
                 </div>
               </a>
 
-              <a 
+              <a
                 href="mailto:sharmoratechnologies@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/3 hover:bg-white/5 hover:border-primary/20 hover:shadow-lg transition-all duration-300 group"
+                className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 group"
+                style={{
+                  border: "1px solid rgba(210,100,50,0.1)",
+                  background: "rgba(210,100,50,0.03)",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(210,100,50,0.3)";
+                  el.style.background = "rgba(210,100,50,0.07)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(210,100,50,0.1)";
+                  el.style.background = "rgba(210,100,50,0.03)";
+                }}
               >
-                <div className="p-3 rounded-xl bg-accent-pink/10 text-accent-pink group-hover:bg-accent-pink group-hover:text-white transition-colors duration-300">
+                <div
+                  className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(210,100,50,0.12)", color: "hsl(20,85%,55%)" }}
+                >
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-extrabold text-gray-400 tracking-wider uppercase font-sans">Email Address</span>
-                  <span className="font-bold text-white text-sm font-heading">sharmoratechnologies@gmail.com</span>
+                  <span
+                    className="text-[10px] font-extrabold tracking-wider uppercase font-sans"
+                    style={{ color: "hsl(38,18%,60%)" }}
+                  >
+                    Email Address
+                  </span>
+                  <span
+                    className="font-bold text-sm font-heading"
+                    style={{ color: "hsl(38,60%,94%)" }}
+                  >
+                    sharmoratechnologies@gmail.com
+                  </span>
                 </div>
               </a>
 
-              <div 
-                className="flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/3 font-sans"
+              <div
+                className="flex items-center gap-4 p-4 rounded-2xl font-sans"
+                style={{
+                  border: "1px solid rgba(50,200,100,0.1)",
+                  background: "rgba(50,200,100,0.03)",
+                }}
               >
-                <div className="p-3 rounded-xl bg-cyan-400/10 text-cyan-400">
+                <div
+                  className="p-3 rounded-xl"
+                  style={{ background: "rgba(50,200,100,0.1)", color: "hsl(145,75%,52%)" }}
+                >
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-extrabold text-gray-400 tracking-wider uppercase">Direct Call</span>
-                  <span className="font-bold text-white text-sm font-heading">+91 78965 54039</span>
+                  <span
+                    className="text-[10px] font-extrabold tracking-wider uppercase"
+                    style={{ color: "hsl(38,18%,60%)" }}
+                  >
+                    Direct Call
+                  </span>
+                  <span
+                    className="font-bold text-sm font-heading"
+                    style={{ color: "hsl(38,60%,94%)" }}
+                  >
+                    +91 78965 54039
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* RIGHT: Input Form */}
-          <div className="lg:col-span-7 w-full">
-            <div className="glass-card border border-white/5 rounded-3xl p-8 md:p-10 shadow-xl relative overflow-hidden text-left">
-              
+          {/* RIGHT: Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="lg:col-span-7 w-full"
+          >
+            <div
+              className="glass-card rounded-3xl p-8 md:p-10 shadow-xl relative overflow-hidden text-left"
+              style={{ border: "1px solid rgba(217,130,43,0.1)" }}
+            >
               <div className="flex items-center gap-2 mb-6 select-none">
-                <Sparkles className="w-4 h-4 text-accent-pink animate-pulse-soft" />
-                <span className="text-[11px] font-extrabold text-gray-300 uppercase tracking-widest font-heading">Compose Project Details</span>
+                <Sparkles
+                  className="w-4 h-4 animate-pulse-soft"
+                  style={{ color: "hsl(20,85%,55%)" }}
+                />
+                <span
+                  className="text-[11px] font-extrabold uppercase tracking-widest font-heading"
+                  style={{ color: "hsl(38,18%,70%)" }}
+                >
+                  Compose Project Details
+                </span>
               </div>
 
               <form className="flex flex-col gap-6 font-sans">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-[10px] font-extrabold text-gray-300 tracking-wider uppercase font-heading">
-                      Your Name <span className="text-accent-pink">*</span>
+                    <label
+                      htmlFor="name"
+                      className="text-[10px] font-extrabold tracking-wider uppercase font-heading"
+                      style={{ color: "hsl(38,18%,70%)" }}
+                    >
+                      Your Name{" "}
+                      <span style={{ color: "hsl(20,85%,55%)" }}>*</span>
                     </label>
                     <input
                       type="text"
@@ -138,14 +284,21 @@ export const ContactSection: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="e.g. John Doe"
-                      className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-white/3 text-white text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6] transition-all placeholder:text-gray-500 font-medium"
+                      style={inputStyle}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
                     />
                   </div>
-                  
+
                   {/* Email */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-[10px] font-extrabold text-gray-300 tracking-wider uppercase font-heading">
-                      Your Email <span className="text-accent-pink">*</span>
+                    <label
+                      htmlFor="email"
+                      className="text-[10px] font-extrabold tracking-wider uppercase font-heading"
+                      style={{ color: "hsl(38,18%,70%)" }}
+                    >
+                      Your Email{" "}
+                      <span style={{ color: "hsl(20,85%,55%)" }}>*</span>
                     </label>
                     <input
                       type="email"
@@ -155,14 +308,20 @@ export const ContactSection: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="e.g. john@example.com"
-                      className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-white/3 text-white text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6] transition-all placeholder:text-gray-500 font-medium"
+                      style={inputStyle}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
                     />
                   </div>
                 </div>
 
                 {/* Project Type */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="projectType" className="text-[10px] font-extrabold text-gray-300 tracking-wider uppercase font-heading">
+                  <label
+                    htmlFor="projectType"
+                    className="text-[10px] font-extrabold tracking-wider uppercase font-heading"
+                    style={{ color: "hsl(38,18%,70%)" }}
+                  >
                     Project Requirements
                   </label>
                   <div className="relative">
@@ -171,15 +330,20 @@ export const ContactSection: React.FC = () => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-white/3 text-white text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6] transition-all appearance-none cursor-pointer font-medium"
+                      style={{ ...inputStyle, cursor: "pointer", appearance: "none" }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
                     >
-                      <option className="bg-[#0b0f19] text-white" value="Custom Website Development">Custom Website Development</option>
-                      <option className="bg-[#0b0f19] text-white" value="E-Commerce Storefront">E-Commerce Storefront</option>
-                      <option className="bg-[#0b0f19] text-white" value="Business Automation Dashboard">Business Automation Dashboard</option>
-                      <option className="bg-[#0b0f19] text-white" value="Mobile UI & Web Experience">Mobile UI & Web Experience</option>
-                      <option className="bg-[#0b0f19] text-white" value="Mastermind Consultation">Mastermind Consultation</option>
+                      <option style={{ background: "#160f0a" }} value="Custom Website Development">Custom Website Development</option>
+                      <option style={{ background: "#160f0a" }} value="E-Commerce Storefront">E-Commerce Storefront</option>
+                      <option style={{ background: "#160f0a" }} value="Business Automation Dashboard">Business Automation Dashboard</option>
+                      <option style={{ background: "#160f0a" }} value="Mobile UI & Web Experience">Mobile UI &amp; Web Experience</option>
+                      <option style={{ background: "#160f0a" }} value="Mastermind Consultation">Mastermind Consultation</option>
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                    <div
+                      className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4"
+                      style={{ color: "hsl(38,18%,60%)" }}
+                    >
                       ▼
                     </div>
                   </div>
@@ -187,8 +351,13 @@ export const ContactSection: React.FC = () => {
 
                 {/* Message */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-[10px] font-extrabold text-gray-300 tracking-wider uppercase font-heading">
-                    Describe your custom features <span className="text-accent-pink">*</span>
+                  <label
+                    htmlFor="message"
+                    className="text-[10px] font-extrabold tracking-wider uppercase font-heading"
+                    style={{ color: "hsl(38,18%,70%)" }}
+                  >
+                    Describe your custom features{" "}
+                    <span style={{ color: "hsl(20,85%,55%)" }}>*</span>
                   </label>
                   <textarea
                     id="message"
@@ -198,35 +367,52 @@ export const ContactSection: React.FC = () => {
                     required
                     rows={4}
                     placeholder="Provide details about your custom integrations, business objectives, and desired layout style..."
-                    className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-white/3 text-white text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6] transition-all resize-none placeholder:text-gray-500 font-medium"
+                    style={{ ...inputStyle, resize: "none" }}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                   />
                 </div>
 
-                {/* Automated Send Channels */}
+                {/* Send Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                  {/* WhatsApp send button */}
                   <button
                     type="button"
                     onClick={handleWhatsAppSend}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full btn-primary text-sm font-bold tracking-wide transition-all duration-300 text-white cursor-pointer font-heading"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full btn-primary text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer font-heading"
                   >
-                    <MessageSquare className="w-4.5 h-4.5 shrink-0" />
+                    <MessageSquare className="w-4 h-4 shrink-0" />
                     Send via WhatsApp
                   </button>
-                  
-                  {/* Email send button */}
+
                   <button
                     type="button"
                     onClick={handleEmailSend}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-white/15 hover:border-white/30 bg-white/3 hover:bg-white/5 text-gray-200 hover:text-white text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer font-heading"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-sm font-bold tracking-wide transition-all duration-300 cursor-pointer font-heading"
+                    style={{
+                      border: "1px solid rgba(217,130,43,0.2)",
+                      color: "hsl(38,18%,70%)",
+                      background: "rgba(217,130,43,0.03)",
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget;
+                      el.style.borderColor = "rgba(217,130,43,0.4)";
+                      el.style.color = "hsl(38,60%,94%)";
+                      el.style.background = "rgba(217,130,43,0.08)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget;
+                      el.style.borderColor = "rgba(217,130,43,0.2)";
+                      el.style.color = "hsl(38,18%,70%)";
+                      el.style.background = "rgba(217,130,43,0.03)";
+                    }}
                   >
-                    <Send className="w-4.5 h-4.5 shrink-0" />
+                    <Send className="w-4 h-4 shrink-0" />
                     Send via Email
                   </button>
                 </div>
               </form>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
